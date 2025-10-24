@@ -6,6 +6,4 @@ import { Component, signal, input } from '@angular/core';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {
-  headerMessage = input.required();
-}
+export class Header {}

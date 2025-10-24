@@ -1,0 +1,226 @@
+{
+  "version": "6.0",
+  "nxVersion": "22.0.1",
+  "pathMappings": {
+    "@spartan-ng/helm/button": [
+      "src/app/libs/ui/ui-button-helm/src/index.ts"
+    ],
+    "@spartan-ng/helm/utils": [
+      "src/app/libs/ui/ui-utils-helm/src/index.ts"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {
+      "angular-app": [
+        {
+          "file": ".editorconfig",
+          "hash": "8037249353422744134"
+        },
+        {
+          "file": ".gitignore",
+          "hash": "17738933498318317962"
+        },
+        {
+          "file": ".postcssrc.json",
+          "hash": "17460548602263189673"
+        },
+        {
+          "file": ".vscode/extensions.json",
+          "hash": "11934160580685414355"
+        },
+        {
+          "file": ".vscode/launch.json",
+          "hash": "17406702432687230417"
+        },
+        {
+          "file": ".vscode/tasks.json",
+          "hash": "10093397977228577162"
+        },
+        {
+          "file": "README.md",
+          "hash": "6713797362519713944"
+        },
+        {
+          "file": "angular.json",
+          "hash": "5774210271695723890"
+        },
+        {
+          "file": "components.json",
+          "hash": "15529771100345143590"
+        },
+        {
+          "file": "package-lock.json",
+          "hash": "12404355080578575224"
+        },
+        {
+          "file": "package.json",
+          "hash": "11149105757959462481",
+          "deps": [
+            "npm:@angular/build",
+            "npm:@angular/cli",
+            "npm:@angular/compiler-cli",
+            "npm:@spartan-ng/cli",
+            "npm:@types/express",
+            "npm:@types/jasmine",
+            "npm:@types/node",
+            "npm:jasmine-core",
+            "npm:karma",
+            "npm:karma-chrome-launcher",
+            "npm:karma-coverage",
+            "npm:karma-jasmine",
+            "npm:karma-jasmine-html-reporter",
+            "npm:tw-animate-css",
+            "npm:typescript",
+            "npm:@angular/cdk",
+            "npm:@angular/common",
+            "npm:@angular/compiler",
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/platform-browser",
+            "npm:@angular/platform-server",
+            "npm:@angular/router",
+            "npm:@angular/ssr",
+            "npm:@spartan-ng/brain",
+            "npm:@tailwindcss/postcss",
+            "npm:class-variance-authority",
+            "npm:clsx",
+            "npm:express",
+            "npm:lucide-angular",
+            "npm:postcss",
+            "npm:rxjs",
+            "npm:tailwind-merge",
+            "npm:tailwindcss",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "public/favicon.ico",
+          "hash": "3988961587069885523"
+        },
+        {
+          "file": "src/app/app.config.server.ts",
+          "hash": "8877246535068392678"
+        },
+        {
+          "file": "src/app/app.config.ts",
+          "hash": "1468349966858641836"
+        },
+        {
+          "file": "src/app/app.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/app.html",
+          "hash": "17084919177121592137"
+        },
+        {
+          "file": "src/app/app.routes.server.ts",
+          "hash": "17500618356136685777"
+        },
+        {
+          "file": "src/app/app.routes.ts",
+          "hash": "809736233805555256"
+        },
+        {
+          "file": "src/app/app.spec.ts",
+          "hash": "16238705024633314172"
+        },
+        {
+          "file": "src/app/app.ts",
+          "hash": "1884369644215009644"
+        },
+        {
+          "file": "src/app/components/footer/footer.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/footer/footer.html",
+          "hash": "13185318664694055157"
+        },
+        {
+          "file": "src/app/components/footer/footer.spec.ts",
+          "hash": "15645345690045411122"
+        },
+        {
+          "file": "src/app/components/footer/footer.ts",
+          "hash": "8838163019717330731"
+        },
+        {
+          "file": "src/app/components/header/header.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/header/header.html",
+          "hash": "3721576581588922345"
+        },
+        {
+          "file": "src/app/components/header/header.spec.ts",
+          "hash": "13029104715187444045"
+        },
+        {
+          "file": "src/app/components/header/header.ts",
+          "hash": "14647685520968741507"
+        },
+        {
+          "file": "src/app/home/home.css",
+          "hash": "5043346832117214758"
+        },
+        {
+          "file": "src/app/home/home.html",
+          "hash": "8834694406698934597"
+        },
+        {
+          "file": "src/app/home/home.spec.ts",
+          "hash": "741458100052814319"
+        },
+        {
+          "file": "src/app/home/home.ts",
+          "hash": "758066528816227548"
+        },
+        {
+          "file": "src/app/service/fragrance.spec.ts",
+          "hash": "7272641034503626519"
+        },
+        {
+          "file": "src/app/service/fragrance.ts",
+          "hash": "3334511765033575622"
+        },
+        {
+          "file": "src/index.html",
+          "hash": "12089325093018349216"
+        },
+        {
+          "file": "src/main.server.ts",
+          "hash": "15449197192418375374"
+        },
+        {
+          "file": "src/main.ts",
+          "hash": "10405740721546735325"
+        },
+        {
+          "file": "src/server.ts",
+          "hash": "16636138296247357433"
+        },
+        {
+          "file": "src/styles.css",
+          "hash": "8921498338047843520"
+        },
+        {
+          "file": "tsconfig.app.json",
+          "hash": "11012988996633513763"
+        },
+        {
+          "file": "tsconfig.json",
+          "hash": "11278123730503324996"
+        },
+        {
+          "file": "tsconfig.spec.json",
+          "hash": "6082722322603857160"
+        }
+      ]
+    },
+    "nonProjectFiles": []
+  },
+  "externalNodesHash": "5659329643235369670"
+}

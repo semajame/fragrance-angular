@@ -1,3 +1,65 @@
-<h1>
-  {{ footerMessage() }}
-</h1>
+<footer class="bg-gray-900 text-gray-300 py-10 px-6 mt-16">
+  <div
+    class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 border-b border-gray-700 pb-10"
+  >
+    <!-- Brand -->
+    <div>
+      <h2 class="text-2xl font-semibold text-white mb-3">FragPlace</h2>
+      <p class="text-sm text-gray-400 leading-relaxed">
+        Discover your signature scent. Explore the finest fragrances that bring out your true
+        personality.
+      </p>
+    </div>
+
+    <!-- Links -->
+    <div>
+      <h3 class="text-lg font-medium text-white mb-3">Quick Links</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/home" class="hover:text-white transition">Home</a></li>
+        <li><a href="/about" class="hover:text-white transition">About</a></li>
+        <li><a href="/contact" class="hover:text-white transition">Contact</a></li>
+        <li><a href="#" class="hover:text-white transition">All Fragrances</a></li>
+      </ul>
+    </div>
+
+    <!-- Support -->
+    <div>
+      <h3 class="text-lg font-medium text-white mb-3">Support</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#" class="hover:text-white transition">FAQs</a></li>
+        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-white transition">Terms & Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <h3 class="text-lg font-medium text-white mb-3">Get in Touch</h3>
+      <p class="text-sm text-gray-400 mb-2">Email: support@fragplace.com</p>
+      <p class="text-sm text-gray-400">Cebu City, Philippines</p>
+      <div class="flex gap-4 mt-4">
+        <a href="#" aria-label="Facebook" class="hover:text-white transition">
+          <lucide-icon [img]="Facebook" class="w-5 h-5"></lucide-icon>
+        </a>
+        <a href="#" aria-label="Instagram" class="hover:text-white transition">
+          <lucide-icon [img]="Instagram" class="w-5 h-5"></lucide-icon>
+        </a>
+        <a href="#" aria-label="Twitter" class="hover:text-white transition">
+          <lucide-icon [img]="Twitter" class="w-5 h-5"></lucide-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div
+    class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center pt-6 text-sm"
+  >
+    <!-- <p class="text-gray-500 text-center sm:text-left">
+      © {{ new Date().getFullYear() }} FragPlace. All rights reserved.
+    </p> -->
+    <p class="text-gray-500 mt-2 sm:mt-0 text-center sm:text-right">
+      Made with ❤️ by <span class="text-white font-medium">James Sevilla Anquillano</span>
+    </p>
+  </div>
+</footer>

@@ -1,3 +1,13 @@
-<p>
-  {{ headerMessage() }}
-</p>
+<header
+  class="fixed top-0 left-0 w-full z-50 flex items-center justify-between py-4 px-8 backdrop-blur-md bg-white/10 border-b border-white/20 shadow-sm text-black"
+>
+  <a href="/" class="text-3xl font-semibold tracking-tighter"> Scentsations </a>
+
+  <nav class="flex gap-6 items-center text-lg">
+    <a href="/home" class="hover:text-gray-500 text-sm transition-colors duration-200">Home</a>
+    <a href="/about" class="hover:text-gray-500 text-sm transition-colors duration-200">About</a>
+    <a href="/contact" class="hover:text-gray-500 text-sm transition-colors duration-200"
+      >Contact</a
+    >
+  </nav>
+</header>
