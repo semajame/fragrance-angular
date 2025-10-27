@@ -1,0 +1,12 @@
+<div *ngFor="let f of fragrance()" class="py[20rem]">
+  <a [routerLink]="['/fragrance', f.id]">
+    <img
+      *ngIf="f.image?.url"
+      [src]="f.image.url"
+      [alt]="f.name"
+      class="w-full h-48 object-contain rounded-sm mb-3 bg-white border border-gray-100 shadow-xs p-3"
+    />
+    <h2>{{ f.name || 'Unnamed Fragrance' }}</h2>
+  </a>
+  hi hi
+</div>

@@ -1,7 +1,5 @@
-<app-header />
-
 <!-- Hero Section -->
-<div class="container mx-auto px-4">
+<div class="container mx-auto px-4 h-full">
   <section
     class="text-center flex flex-col items-center justify-center min-h-[70vh] py-20 md:py-28"
   >
@@ -31,7 +29,10 @@
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-2 sm:gap-0">
       <h1 class="text-xl sm:text-2xl text-gray-900">Popular Fragrances</h1>
 
-      <a href="" class="flex items-center justify-center gap-1 text-sm sm:text-base text-gray-500">
+      <a
+        routerLink="/fragrances"
+        class="flex items-center justify-center gap-1 text-sm sm:text-base text-gray-500 cursor-pointer hover:underline"
+      >
         See more
         <lucide-icon [img]="Arrow" class="w-4 h-4"></lucide-icon>
       </a>
@@ -52,7 +53,7 @@
       class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6"
       *ngIf="!loading() && !error()"
     >
-      <div *ngFor="let f of fragrances()" class="">
+      <a *ngFor="let f of fragrances()" [routerLink]="['/fragrance', f.id]">
         <img
           *ngIf="f.image?.url"
           [src]="f.image.url"
@@ -83,9 +84,7 @@
           </p>
           <p class="text-gray-500">Votes: {{ f.reviewsCount || 'N/A' }}</p>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>
-
-<app-footer />
