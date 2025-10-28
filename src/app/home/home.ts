@@ -1,26 +1,17 @@
 import { Component, signal, OnInit } from '@angular/core';
-import { Header } from '../components/header/header';
-import { Footer } from '../components/footer/footer';
+
 import { FragranceService } from '../service/fragrance';
 import { CommonModule } from '@angular/common'; // <-- import CommonModule
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { HlmButtonImports } from '@spartan-ng/helm/button';
-import { HlmInputImports } from '@spartan-ng/helm/input';
+
 import { LucideAngularModule, ChevronRight, Star } from 'lucide-angular';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [
-    Header,
-    Footer,
-    CommonModule,
-    HlmButtonImports,
-    LucideAngularModule,
-    HlmInputImports,
-    RouterLink,
-  ],
+  imports: [CommonModule, HlmButtonImports, LucideAngularModule, RouterLink],
   templateUrl: './home.html',
 
   styleUrl: './home.css',
@@ -50,15 +41,16 @@ export class Home implements OnInit {
     }
   }
 
-  async getById() {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (!id) return;
+  async getByBrandAndName() {
+    const brand = this.route.snapshot.paramMap.get('brand');
+    const name = this.route.snapshot.paramMap.get('name');
+    if (!brand || !name) return;
 
     this.loading.set(true);
     this.error.set('');
     try {
-      const data = await this.fragranceService.getById(id);
-      this.fragrances.set([data]);
+      const data = await this.fragranceService.getByBrandAndName(brand, name);
+      this.fragrances.set(data);
 
       console.log(data);
     } catch (err) {

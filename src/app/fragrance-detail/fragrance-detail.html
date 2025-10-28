@@ -1,12 +1,125 @@
-<div *ngFor="let f of fragrance()" class="py[20rem]">
-  <a [routerLink]="['/fragrance', f.id]">
-    <img
-      *ngIf="f.image?.url"
-      [src]="f.image.url"
-      [alt]="f.name"
-      class="w-full h-48 object-contain rounded-sm mb-3 bg-white border border-gray-100 shadow-xs p-3"
-    />
-    <h2>{{ f.name || 'Unnamed Fragrance' }}</h2>
-  </a>
-  hi hi
+<!-- Skeleton Loader -->
+<div
+  *ngIf="loading()"
+  class="pb-40 pt-30 px-6 max-w-6xl mx-auto min-h-screen grid place-items-center gap-6"
+>
+  <div class="grid md:grid-cols-2 w-full gap-6">
+    <!-- Left column skeleton -->
+    <div class="flex flex-col items-center gap-4">
+      <div class="w-72 h-72 bg-gray-200 rounded animate-pulse"></div>
+      <div class="w-full space-y-2">
+        <div class="h-6 bg-gray-200 rounded w-3/4 animate-pulse"></div>
+        <div class="h-4 bg-gray-200 rounded w-1/2 animate-pulse"></div>
+        <div class="h-1 bg-gray-300 rounded w-full animate-pulse mt-2"></div>
+        <div class="flex gap-2 mt-2">
+          <div class="h-4 w-10 bg-gray-200 rounded animate-pulse"></div>
+          <div class="h-4 w-20 bg-gray-200 rounded animate-pulse"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column skeleton -->
+    <div class="flex flex-col gap-4 p-6">
+      <div>
+        <div class="h-6 bg-gray-200 rounded w-1/3 animate-pulse mb-2"></div>
+        <div class="flex flex-wrap gap-2">
+          <div
+            *ngFor="let _ of skeletons"
+            class="h-5 w-16 bg-gray-200 rounded-full animate-pulse"
+          ></div>
+        </div>
+      </div>
+      <div class="space-y-2 mt-6">
+        <div class="h-4 bg-gray-200 rounded w-1/2 animate-pulse"></div>
+        <div class="h-4 bg-gray-200 rounded w-1/3 animate-pulse"></div>
+        <div class="h-4 bg-gray-200 rounded w-1/4 animate-pulse"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Actual Fragrance Detail -->
+<div
+  *ngIf="!loading() && fragrance() as f"
+  class="pb-40 pt-30 px-6 max-w-6xl grid place-items-center mx-auto min-h-screen"
+>
+  <!-- Left Column -->
+  <div class="grid md:grid-cols-2 place-items-center w-full">
+    <div class="flex flex-col items-center text-left">
+      <img
+        *ngIf="f.image?.url"
+        [src]="f.image.url"
+        [alt]="f.name"
+        class="w-72 h-72 object-contain mb-5 bg-white p-3"
+      />
+      <!-- Name & Brand -->
+      <div class="w-full">
+        <h1 class="text-lg mb-1 text-center">{{ f.name }}</h1>
+        <p class="text-gray-500 text-md mb-3 text-center">{{ f.brand?.name }}</p>
+        <hr class="text-gray-600 h-2 w-full" />
+        <!-- Ratings -->
+        <div class="flex items-center justify-between gap-2 text-yellow-500 mb-4">
+          <div class="flex items-center gap-2">
+            <lucide-icon [img]="Star" class="w-5 h-5 text-yellow-300 fill-yellow-300"></lucide-icon>
+            <span class="text-gray-700 font-medium">{{ f.reviewsScoreAvg || 0 }}</span>
+            <span class="text-gray-400 text-sm">({{ f.reviewsCount || 0 }} votes)</span>
+          </div>
+          <div>
+            <h2 class="text-gray-400 text-sm">Reviews</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="p-6">
+      <!-- Notes -->
+      <div>
+        <h2 class="text-xl font-semibold mb-3">Notes</h2>
+        <div class="flex flex-wrap gap-2">
+          <span
+            *ngFor="let note of f.notes"
+            class="text-white text-sm px-3 py-1 rounded-full bg-zinc-700"
+          >
+            {{ note.name }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Info Section -->
+      <div class="mt-6 space-y-3 text-sm text-gray-600">
+        <p class="flex items-center gap-2">
+          <span class="font-medium flex gap-2 items-center"
+            ><lucide-icon [img]="Calendar" class="w-4 h-3"></lucide-icon> Release Date:</span
+          >
+          {{ f.releasedAt | date : 'yyyy' }}
+        </p>
+        <p *ngIf="f.perfumers?.length" class="flex items-center">
+          <span class="font-medium flex gap-2 items-center"
+            ><lucide-icon [img]="Milk" class="w-4 h-4"></lucide-icon> Perfumer:</span
+          >
+          <span *ngFor="let perfumer of f.perfumers" class="ml-1 text-gray-600">
+            {{ perfumer.name }}
+          </span>
+        </p>
+        <p class="flex items-center gap-2">
+          <span class="font-medium flex gap-2 items-center"
+            ><lucide-icon [img]="Diamond" class="w-4 h-4"></lucide-icon> Brand:</span
+          >
+          {{ f.brand?.name }}
+        </p>
+        <p class="flex items-center gap-2">
+          <span class="font-medium flex gap-2 items-center"
+            ><lucide-icon [img]="Flame" class="w-4 h-4"></lucide-icon> Popularity:</span
+          >
+          {{ f.popularityScore }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Error Message -->
+<div *ngIf="error()" class="text-red-500 text-center mt-6">
+  {{ error() }}
 </div>

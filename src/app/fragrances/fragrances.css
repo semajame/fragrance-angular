@@ -1,0 +1,6 @@
+.isActive {
+  background-color: #1f2937; /* dark gray */
+  color: white;
+  border-radius: 0.25rem; /* rounded corners */
+  font-weight: bold;
+}

@@ -24,6 +24,15 @@
       ],
       "@spartan-ng/helm/form-field": [
         "./src/app/libs/ui/ui-form-field-helm/src/index.ts"
+      ],
+      "@spartan-ng/helm/pagination": [
+        "./src/app/libs/ui/ui-pagination-helm/src/index.ts"
+      ],
+      "@spartan-ng/helm/icon": [
+        "./src/app/libs/ui/ui-icon-helm/src/index.ts"
+      ],
+      "@spartan-ng/helm/select": [
+        "./src/app/libs/ui/ui-select-helm/src/index.ts"
       ]
     }
   },

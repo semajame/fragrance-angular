@@ -1,11 +1,39 @@
 <div class="py-[10rem] container mx-auto px-4 h-full">
-  <h1 class="text-3xl mb-5">Most Popular Fragrances</h1>
+  <h1 class="text-3xl mb-20">Most Popular Fragrances</h1>
+  <!-- Skeleton Loader -->
+  <div
+    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6"
+    *ngIf="loading()"
+  >
+    <div
+      *ngFor="let skeleton of skeletons"
+      class="animate-pulse p-3 border border-gray-100 rounded-sm shadow-xs bg-white"
+    >
+      <!-- Image Placeholder -->
+      <div class="w-full h-48 bg-gray-200 rounded mb-3"></div>
 
+      <!-- Name & Brand Placeholder -->
+      <div class="space-y-2">
+        <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+        <div class="h-3 bg-gray-200 rounded w-1/2"></div>
+      </div>
+
+      <hr class="my-2 sm:my-3" />
+
+      <!-- Reviews Placeholder -->
+      <div class="flex items-center justify-between mt-2">
+        <div class="h-3 w-10 bg-gray-200 rounded"></div>
+        <div class="h-3 w-6 bg-gray-200 rounded"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Actual Fragrance Grid -->
   <div
     class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6"
     *ngIf="!loading() && !error()"
   >
-    <div *ngFor="let f of fragrances()" class="">
+    <a *ngFor="let f of fragrances()" [routerLink]="['/fragrance', f.brand?.name, f.name]">
       <img
         *ngIf="f.image?.url"
         [src]="f.image.url"
@@ -36,6 +64,54 @@
         </p>
         <p class="text-gray-500">Votes: {{ f.reviewsCount || 'N/A' }}</p>
       </div>
-    </div>
+    </a>
   </div>
+
+  <!-- Error Message -->
+  <div *ngIf="error()" class="text-red-500 text-center mt-6">
+    {{ error() }}
+  </div>
+
+  <nav hlmPagination class="mt-40 flex justify-center">
+    <ul hlmPaginationContent>
+      <!-- Previous button -->
+      <li hlmPaginationItem>
+        <button
+          hlmPaginationPrevious
+          [disabled]="currentPage() === 1"
+          (click)="loadPage(currentPage() - 1)"
+          class="flex items-center gap-1 p-2 rounded hover:bg-gray-200 disabled:opacity-50 cursor-pointer"
+        >
+          <lucide-icon [img]="LeftArrow" class="w-5 h-5"></lucide-icon>
+        </button>
+      </li>
+      <!-- Dynamic pages -->
+      <li hlmPaginationItem *ngFor="let page of visiblePages()">
+        <button
+          hlmPaginationLink
+          [class.isActive]="page === currentPage()"
+          (click)="loadPage(page)"
+        >
+          {{ page }}
+        </button>
+      </li>
+
+      <!-- Ellipsis if not on last range -->
+      <li hlmPaginationItem *ngIf="visiblePages()[visiblePages().length - 1] < totalPages">
+        <hlm-pagination-ellipsis></hlm-pagination-ellipsis>
+      </li>
+
+      <!-- Next button -->
+      <li hlmPaginationItem>
+        <button
+          hlmPaginationNext
+          [disabled]="currentPage() === totalPages"
+          (click)="loadPage(currentPage() + 1)"
+          class="flex items-center gap-1 p-2 rounded hover:bg-gray-200 disabled:opacity-50 cursor-pointer"
+        >
+          <lucide-icon [img]="Arrow" class="w-5 h-5"></lucide-icon>
+        </button>
+      </li>
+    </ul>
+  </nav>
 </div>
