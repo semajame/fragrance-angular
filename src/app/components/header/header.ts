@@ -1,9 +1,13 @@
 import { Component, signal, input } from '@angular/core';
-import { HlmInputImports } from '@spartan-ng/helm/input';
+import { LucideAngularModule, Github } from 'lucide-angular';
+
 @Component({
   selector: 'app-header',
-  imports: [HlmInputImports],
+  standalone: true,
+  imports: [LucideAngularModule],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {}
+export class Header {
+  readonly Github = Github;
+}

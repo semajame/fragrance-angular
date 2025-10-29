@@ -1,0 +1,64 @@
+<div>
+  <div #searchContainer class="w-full max-w-lg mx-auto relative px-2 sm:px-0">
+    <!-- Search Input -->
+    <div class="flex items-center gap-2 relative">
+      <input
+        type="text"
+        [(ngModel)]="query"
+        (input)="onInputChange()"
+        placeholder="Search fragrance..."
+        class="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 bg-white text-gray-700 placeholder-gray-400 w-full pr-10"
+      />
+
+      <button
+        *ngIf="query"
+        (click)="clearSearch()"
+        class="absolute right-25 p-2 text-gray-400 hover:text-gray-600 transition cursor-pointer"
+        aria-label="Clear search"
+      >
+        ✕
+      </button>
+
+      <!-- 🔍 Search Button -->
+      <button
+        (click)="search(query)"
+        class="bg-white text-black px-4 py-2.5 rounded-lg cursor-pointer transition shrink-0"
+        [disabled]="loading"
+      >
+        {{ loading ? 'Search' : 'Search' }}
+      </button>
+    </div>
+
+    <!-- Dropdown Results -->
+    <div
+      *ngIf="results.length > 0 && query"
+      class="absolute w-full sm:w-[97%] left-1/2 -translate-x-1/2 top-[4.2rem] bg-white border border-gray-200 rounded-lg shadow-lg z-10"
+    >
+      <ul class="divide-y max-h-[400px] overflow-y-auto z-20">
+        <!-- ❌ Clear Button -->
+
+        <a
+          *ngFor="let item of results"
+          [routerLink]="['/fragrance', item.brand?.name, item.name]"
+          class="flex items-center gap-3 p-3 cursor-pointer"
+          (click)="clearSearch()"
+        >
+          <img
+            *ngIf="item.image?.url"
+            [src]="item.image.url"
+            alt="{{ item.name }}"
+            class="w-12 h-12 object-contain rounded-md"
+          />
+          <div class="truncate">
+            <div class="font-semibold text-gray-800 text-sm sm:text-base">
+              {{ item.name }}
+            </div>
+            <div class="text-xs sm:text-sm text-gray-600">
+              {{ item.brand?.name }}
+            </div>
+          </div>
+        </a>
+      </ul>
+    </div>
+  </div>
+</div>

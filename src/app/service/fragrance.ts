@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environments';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -69,6 +70,44 @@ export class FragranceService {
       return response;
     } catch (error) {
       console.error('Error:', error);
+      throw error;
+    }
+  }
+
+  async searchFragrance(name: string) {
+    const cacheKey = `fragrance_${name}`;
+    const cached = this.getCache(cacheKey);
+    if (cached) return cached;
+
+    const body = {
+      queries: [
+        {
+          indexUid: 'fragrances',
+          q: name,
+          facets: ['brand.name', 'notes.name', 'perfumers.name', 'releasedAt'],
+          offset: 0,
+        },
+      ],
+    };
+
+    try {
+      const response: any = await firstValueFrom(
+        this.http.post(this.apiUrl, body, { headers: this.headers })
+      );
+
+      const fragrances = response.results[0]?.hits || [];
+
+      // normalize arrays
+      fragrances.forEach((f: any) => {
+        f.notes = Array.isArray(f.notes) ? f.notes : f.notes ? [f.notes] : [];
+        f.perfumers = Array.isArray(f.perfumers) ? f.perfumers : f.perfumers ? [f.perfumers] : [];
+      });
+
+      this.setCache(cacheKey, fragrances);
+      console.log('Fetched by name from API', fragrances);
+      return fragrances;
+    } catch (error) {
+      console.error('Error fetching fragrance by name:', error);
       throw error;
     }
   }
@@ -145,7 +184,7 @@ export class FragranceService {
       }
 
       this.setCache(cacheKey, fragrance);
-      console.log('Fetched from API');
+      console.log('Fetched from API', fragrance);
       return fragrance;
     } catch (error) {
       console.error('Error fetching fragrance by brand and name:', error);

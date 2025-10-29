@@ -7,13 +7,13 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 
 import { LucideAngularModule, ChevronRight, Star } from 'lucide-angular';
+import { SearchBarComponent } from '../components/search-bar/search-bar';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HlmButtonImports, LucideAngularModule, RouterLink],
+  imports: [CommonModule, HlmButtonImports, LucideAngularModule, RouterLink, SearchBarComponent],
   templateUrl: './home.html',
-
   styleUrl: './home.css',
 })
 export class Home implements OnInit {

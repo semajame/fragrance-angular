@@ -11,8 +11,6 @@ import {
   HlmPaginationEllipsis,
   HlmPaginationItem,
   HlmPaginationLink,
-  HlmPaginationNext,
-  HlmPaginationPrevious,
 } from '@spartan-ng/helm/pagination';
 
 @Component({
@@ -28,8 +26,7 @@ import {
     HlmPagination,
     HlmPaginationContent,
     HlmPaginationItem,
-    HlmPaginationPrevious,
-    HlmPaginationNext,
+
     HlmPaginationLink,
     HlmPaginationEllipsis,
   ],

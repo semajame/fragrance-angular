@@ -1,5 +1,5 @@
 import { Component, input, signal } from '@angular/core';
-import { LucideAngularModule, Facebook, Instagram, Twitter } from 'lucide-angular';
+import { LucideAngularModule, Github } from 'lucide-angular';
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +8,5 @@ import { LucideAngularModule, Facebook, Instagram, Twitter } from 'lucide-angula
   styleUrl: './footer.css',
 })
 export class Footer {
-  readonly Facebook = Facebook;
-  readonly Instagram = Instagram;
-  readonly Twitter = Twitter;
+  readonly Github = Github;
 }

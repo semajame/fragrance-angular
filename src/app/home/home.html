@@ -4,9 +4,7 @@
     class="text-center flex flex-col items-center justify-center min-h-[70vh] py-20 md:py-28"
   >
     <div class="flex flex-col gap-4">
-      <h1
-        class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold max-w-[700px] mx-auto tracking-tight"
-      >
+      <h1 class="text-6xl sm:text-7xl font-bold max-w-[700px] mx-auto tracking-tight">
         Find the Scent That Feels Like You
       </h1>
 
@@ -18,15 +16,21 @@
 
     <button
       hlmBtn
-      class="my-6 px-6 py-5 text-sm sm:text-base rounded-md cursor-pointer hover:scale-105 transition-transform duration-200"
+      class="my-6 px-6 py-5 text-sm sm:text-base rounded-md cursor-pointer hover:bg-zinc-800 transition-transform duration-200"
+      routerLink="/fragrances"
     >
       Get Started
     </button>
   </section>
 
+  <div class="max-w-[800px] mx-auto py-10 px-10 mb-40 relative bg-zinc-800 rounded-md">
+    <h1 class="text-xl text-white text-center mb-5">Browse over 100,000 Fragrances</h1>
+    <app-search-bar></app-search-bar>
+  </div>
+
   <!-- Fragrance Section -->
   <div class="pb-20">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-2 sm:gap-0">
+    <div class="flex items-center justify-between mb-6 gap-2 sm:gap-0">
       <h1 class="text-xl sm:text-2xl text-gray-900">Popular Fragrances</h1>
 
       <a
@@ -40,11 +44,6 @@
 
     <!-- Loading -->
     <div *ngIf="loading()" class="text-center py-10 text-gray-500">Loading fragrances...</div>
-
-    <!-- Error -->
-    <div *ngIf="error()" class="text-center text-red-500 py-10">
-      {{ error() }}
-    </div>
 
     <!-- Fragrance List -->
     <div
