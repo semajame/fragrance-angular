@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "builds": [
+    {
+      "src": "server.ts",
+      "use": "@vercel/node",
+      "config": { "maxLambdaSize": "50mb" }
+    },
+    {
+      "src": "dist/angular-app/browser/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/server.ts"
+    }
+  ]
+}
