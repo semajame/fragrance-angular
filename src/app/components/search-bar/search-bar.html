@@ -13,7 +13,7 @@
       <button
         *ngIf="query"
         (click)="clearSearch()"
-        class="absolute right-25 p-2 text-gray-400 hover:text-gray-600 transition cursor-pointer"
+        class="px-4 py-2.5 rounded-lg text-gray-400 hover:text-gray-600 transition cursor-pointer bg-white"
         aria-label="Clear search"
       >
         ✕
@@ -25,7 +25,7 @@
         class="bg-white text-black px-4 py-2.5 rounded-lg cursor-pointer transition shrink-0"
         [disabled]="loading"
       >
-        {{ loading ? 'Search' : 'Search' }}
+        {{ loading ? 'Searching...' : 'Search' }}
       </button>
     </div>
 
@@ -35,8 +35,6 @@
       class="absolute w-full sm:w-[97%] left-1/2 -translate-x-1/2 top-[4.2rem] bg-white border border-gray-200 rounded-lg shadow-lg z-10"
     >
       <ul class="divide-y max-h-[400px] overflow-y-auto z-20">
-        <!-- ❌ Clear Button -->
-
         <a
           *ngFor="let item of results"
           [routerLink]="['/fragrance', item.brand?.name, item.name]"
